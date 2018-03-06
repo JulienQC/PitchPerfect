@@ -21,8 +21,8 @@ public class NotesController : MonoBehaviour {
         float angle = 2 * Mathf.PI / children.Length;
         for(int i = 0; i < children.Length; i++)
         {
-            transforms[i].position = new Vector3(ray * Mathf.Cos(angle * i), 1,
-                                                 ray * Mathf.Sin(angle * i));
+            transforms[i].position = new Vector3(ray * Mathf.Cos(angle * (i - 1)), 1,
+                                                 ray * Mathf.Sin(angle * (i - 1)));
         }
 
         time = 0;

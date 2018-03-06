@@ -8,10 +8,12 @@ public class ProjectileController : MonoBehaviour {
     public Vector3 target;
     public Vector3 direction;
 
-	public static ProjectileController Create(Object prefab, Vector3 pos, Quaternion rot, float s, Vector3 t)
+	public static ProjectileController Create(Object prefab, Color color, Vector3 pos, Quaternion rot, float s, Vector3 t)
     {
         GameObject obj = Instantiate(prefab, pos, rot) as GameObject;
         ProjectileController proj = obj.GetComponent<ProjectileController>();
+        Material m = obj.GetComponent<Renderer>().material;
+        m.color = color;
         proj.speed = s;
         proj.target = t;
         proj.direction = (t - obj.transform.position).normalized;
