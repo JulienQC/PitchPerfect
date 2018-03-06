@@ -2,6 +2,7 @@
 
 public class NoteController : MonoBehaviour{
 
+    public AudioClip noteSound;
     public GameObject projectilePrefab;
     public KeyCode key;
     public float forceFactor;
@@ -9,12 +10,14 @@ public class NoteController : MonoBehaviour{
     private GameObject prefab;
     private GameObject player;
     private PlayerMovement mover;
+    private AudioSource source;
 
     // Use this for initialization
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         mover = player.GetComponent<PlayerMovement>();
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,16 +30,16 @@ public class NoteController : MonoBehaviour{
         }
     }
 
-    public void SetKey(KeyCode k)
-    {
-        key = k;
-    }
-
     public void SendProjectile(float angle, float ray, float speed)
     {
         Vector3 position = new Vector3(ray * Mathf.Cos(angle), 1, ray * Mathf.Sin(angle));
         Quaternion rotation = Quaternion.Euler(90, 0, Mathf.Rad2Deg * angle - 90);
         Vector3 target = new Vector3(0, 1, 0);
         ProjectileController proj = ProjectileController.Create(projectilePrefab, position, rotation, speed, target);
+    }
+
+    public void PlayNote()
+    {
+        source.PlayOneShot(noteSound);
     }
 }

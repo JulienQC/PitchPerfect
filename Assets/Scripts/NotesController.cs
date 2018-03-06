@@ -7,6 +7,7 @@ public class NotesController : MonoBehaviour {
     public float ray = 10.0f;
     public float projectileSpeed = 10f;
     public float timeInterval = 2;
+    public float delay = 1;
 
     private NoteController[] children;
     private float time;
@@ -31,7 +32,9 @@ public class NotesController : MonoBehaviour {
     {
         if(time == 0)
         {
-            FireWave();
+            int id = Random.Range(0, children.Length - 1);
+            children[id].PlayNote();
+            StartCoroutine(FireWave(id));
         }
         time += Time.deltaTime;
         if (time > timeInterval)
@@ -40,12 +43,12 @@ public class NotesController : MonoBehaviour {
         }
     }
 
-    private void FireWave()
-    {
-        int id = Random.Range(0, children.Length - 1);
-        for(int i = 0; i < id; i++)
-        {
 
+    IEnumerator FireWave(int id)
+    {
+        yield return new WaitForSeconds(delay);
+        for (int i = 0; i < id; i++)
+        {
             FireProjectile(i);
         }
         for (int i = id + 1; i < children.Length; i++)
