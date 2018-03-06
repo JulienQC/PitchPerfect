@@ -19,8 +19,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4284429316711868}
-  - component: {fileID: 114502771036300366}
   - component: {fileID: 33141275641999232}
+  - component: {fileID: 114292858982551424}
   - component: {fileID: 23652822504823002}
   m_Layer: 0
   m_Name: Note
@@ -83,7 +83,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1527245738090310}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114502771036300366
+--- !u!114 &114292858982551424
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -91,8 +91,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1527245738090310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6601f32adddda1408df6ba1ade782ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 19180be88b0605b4f971089701a7d0be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: 0
+  projectilePrefab: {fileID: 1677841135748882, guid: 7eed69a09c92e184dbd3ab0acede3bc6,
+    type: 2}
+  key: 49
   forceFactor: 250
